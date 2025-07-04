@@ -1,0 +1,84 @@
+---
+description: 
+globs: *.html, **/*.html
+alwaysApply: false
+---
+
+# HTML Standards & Best Practices
+
+## Document Structure
+- Always start with `<!DOCTYPE html>`
+- Include `<html lang="fr">` or appropriate language
+- Use proper meta tags in `<head>`:
+  - `<meta charset="UTF-8">`
+  - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+  - `<title>` descriptive and unique
+
+## Semantic HTML5
+- Use semantic elements instead of generic divs:
+  - `<header>` for page/section headers
+  - `<nav>` for navigation menus
+  - `<main>` for primary content
+  - `<section>` for thematic groupings
+  - `<article>` for standalone content
+  - `<aside>` for sidebar content
+  - `<footer>` for page/section footers
+
+## Accessibility Requirements
+- All images must have descriptive `alt` attributes
+- Use proper heading hierarchy (h1 → h2 → h3, no skipping)
+- Include `aria-label` for interactive elements without text
+- Use `role` attributes when semantic meaning is unclear
+- Ensure all form controls have associated labels
+- Provide skip links for keyboard navigation
+
+## Form Best Practices
+- Use appropriate input types (`email`, `tel`, `url`, `date`, etc.)
+- Include `required` attribute for mandatory fields
+- Use `placeholder` for hints, not instructions
+- Group related fields with `<fieldset>` and `<legend>`
+- Implement proper error handling and validation messages
+
+## Performance Optimizations
+- Use semantic HTML to reduce CSS and JavaScript needs
+- Implement lazy loading for images: `loading="lazy"`
+- Preload critical resources: `<link rel="preload">`
+- Use modern image formats with fallbacks
+- Minimize inline styles and scripts
+
+## SEO and Meta Tags
+- Include meaningful meta description
+- Use structured data (JSON-LD) when appropriate
+- Implement Open Graph tags for social sharing
+- Use canonical URLs to prevent duplicate content
+- Include proper robots meta tags
+
+## Example Structure
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title - Site Name</title>
+    <meta name="description" content="Page description">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <!-- Navigation items -->
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Page Title</h1>
+        <!-- Main content -->
+    </main>
+    
+    <footer>
+        <!-- Footer content -->
+    </footer>
+</body>
+</html>
+```

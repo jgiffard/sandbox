@@ -1,0 +1,211 @@
+---
+description: 
+globs: *.js, **/*.js
+alwaysApply: false
+---
+
+# JavaScript Standards & Best Practices
+
+## Modern ES6+ Syntax
+- Always use `const` by default, `let` only when reassignment needed
+- Never use `var`
+- Prefer arrow functions for callbacks and functional programming
+- Use template literals for string interpolation
+- Implement destructuring for cleaner code
+- Use modern array methods (`map`, `filter`, `reduce`, `find`)
+
+## Function Best Practices
+```javascript
+// Prefer arrow functions for callbacks
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);
+
+// Use destructuring for parameters
+function createUser({ name, email, age = 18 }) {
+  return { name, email, age };
+}
+
+// Use async/await for promises
+async function fetchUserData(id) {
+  try {
+    const response = await fetch(`/api/users/${id}`);
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw error;
+  }
+}
+```
+
+## Error Handling
+- Always use try/catch with async operations
+- Provide meaningful error messages
+- Log errors appropriately (console.error for development)
+- Implement graceful degradation for user-facing errors
+- Use proper error types and custom error classes when needed
+
+## Event Handling
+```javascript
+// Use event delegation for dynamic content
+document.addEventListener('click', (event) => {
+  if (event.target.matches('.button')) {
+    handleButtonClick(event);
+  }
+});
+
+// Debounce frequent events
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+const debouncedSearch = debounce(searchFunction, 300);
+input.addEventListener('input', debouncedSearch);
+```
+
+## DOM Manipulation
+- Use `querySelector` and `querySelectorAll` over older methods
+- Cache DOM references when used multiple times
+- Use `textContent` instead of `innerHTML` when displaying data
+- Implement proper cleanup to prevent memory leaks
+- Use modern APIs like `classList` instead of `className`
+
+## Performance Optimizations
+```javascript
+// Use requestAnimationFrame for animations
+function animateElement(element, property, targetValue) {
+  const startValue = parseFloat(getComputedStyle(element)[property]);
+  const duration = 300;
+  const startTime = performance.now();
+  
+  function animate(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    const currentValue = startValue + (targetValue - startValue) * progress;
+    element.style[property] = `${currentValue}px`;
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+  
+  requestAnimationFrame(animate);
+}
+
+// Use efficient array operations
+const processLargeArray = (items) => {
+  // Use for...of for better performance than forEach on large arrays
+  const results = [];
+  for (const item of items) {
+    if (item.isValid) {
+      results.push(processItem(item));
+    }
+  }
+  return results;
+};
+```
+
+## Security Best Practices
+- Always validate and sanitize user inputs
+- Use `textContent` instead of `innerHTML` when displaying user data
+- Avoid `eval()` and `Function()` constructor
+- Implement Content Security Policy (CSP)
+- Use HTTPS for all API calls
+- Never expose sensitive data in client-side code
+
+## Code Organization
+```javascript
+// Use modules for code organization
+// utils.js
+export const formatDate = (date) => {
+  return new Intl.DateTimeFormat('fr-FR').format(date);
+};
+
+export const debounce = (func, wait) => {
+  // ... implementation
+};
+
+// main.js
+import { formatDate, debounce } from './utils.js';
+
+// Use descriptive naming
+const calculateTotalPrice = (items, taxRate = 0.20) => {
+  return items.reduce((total, item) => total + item.price, 0) * (1 + taxRate);
+};
+```
+
+## Library and Dependency Management
+- **Prefer vanilla JavaScript** for simple functionality over external libraries
+- **Check existing dependencies** before adding new ones to avoid duplication
+- **Use native APIs first**: Fetch API, Web Storage, Intersection Observer, etc.
+- **Evaluate necessity**: Ask "Can this be built simply without a library?"
+- **Consider bundle size impact** of every added dependency
+- **Audit dependencies regularly** to remove unused packages
+
+### Vanilla JavaScript Alternatives
+```javascript
+// ✅ Use native Fetch instead of axios for simple requests
+const fetchData = async (url) => {
+  const response = await fetch(url);
+  return response.json();
+};
+
+// ✅ Use native DOM methods instead of jQuery
+const toggleClass = (element, className) => {
+  element.classList.toggle(className);
+};
+
+// ✅ Use native date formatting instead of moment.js for simple cases
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat('fr-FR').format(date);
+};
+
+// ✅ Use native animations instead of animation libraries for simple effects
+const fadeIn = (element, duration = 300) => {
+  element.style.opacity = '0';
+  element.style.transition = `opacity ${duration}ms ease`;
+  requestAnimationFrame(() => {
+    element.style.opacity = '1';
+  });
+};
+```
+
+### When Libraries Are Justified
+- Complex data visualization (D3.js, Chart.js)
+- Advanced state management in large applications
+- Rich text editing functionality
+- Complex date/time operations across timezones
+- Advanced image manipulation
+- WebGL/3D graphics operations
+
+## Modern JavaScript Features
+- Use optional chaining (`?.`) for safe property access
+- Use nullish coalescing (`??`) for default values
+- Implement proper module imports/exports
+- Use `Promise.allSettled()` for handling multiple async operations
+- Use `Array.at()` for negative indexing
+- Implement proper WeakMap/WeakSet usage for memory management
+
+## Browser Compatibility
+- Use progressive enhancement principles
+- Implement feature detection before using new APIs
+- Provide polyfills for critical functionality
+- Test across different browsers and devices
+- Use transpilation (Babel) for production if supporting older browsers
+
+## Development Best Practices
+- Use meaningful variable and function names
+- Write self-documenting code with clear logic
+- Write comments in English only for complex algorithms and business logic
+- Use consistent indentation (2 spaces recommended)
+- Add semicolons consistently
+- Use strict mode (`'use strict'`) when appropriate

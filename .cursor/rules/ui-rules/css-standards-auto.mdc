@@ -1,0 +1,135 @@
+---
+description: 
+globs: *.css, **/*.css
+alwaysApply: false
+---
+
+# CSS Standards & Best Practices
+
+## Modern CSS Architecture
+- Use CSS custom properties (variables) for consistency
+- Implement mobile-first responsive design
+- Use logical properties (`margin-inline`, `padding-block`)
+- Prefer modern layout methods (Grid, Flexbox)
+- Use container queries for component-based responsive design
+
+## CSS Variables & Organization
+```css
+:root {
+  /* Colors */
+  --primary-color: #6366f1;
+  --secondary-color: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Typography */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+}
+```
+
+## Layout Best Practices
+- Use CSS Grid for page layouts
+- Use Flexbox for component layouts
+- Implement logical properties for internationalization
+- Use `aspect-ratio` property for consistent proportions
+- Avoid fixed heights, prefer min-height
+- Use `clamp()` for responsive typography and spacing
+
+## Performance Optimizations
+- Use efficient selectors (avoid deep nesting > 3 levels)
+- Prefer `transform` and `opacity` for animations
+- Use `contain` property for layout optimization
+- Implement CSS containment for heavy components
+- Use `will-change` sparingly and remove after animation
+- Minimize use of `!important`
+
+## Modern CSS Features
+```css
+/* Container queries */
+@container (min-width: 768px) {
+  .card { display: grid; }
+}
+
+/* CSS Grid with subgrid */
+.layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Modern color functions */
+.element {
+  color: oklch(70% 0.25 180);
+  background: color-mix(in srgb, var(--primary-color) 20%, transparent);
+}
+
+/* Logical properties */
+.content {
+  margin-inline: auto;
+  padding-block: var(--spacing-lg);
+}
+```
+
+## Responsive Design Patterns
+- Use mobile-first approach with `min-width` media queries
+- Implement fluid typography with `clamp()`
+- Use relative units (rem, em, %, vw, vh)
+- Create responsive grids with `minmax()` and `auto-fit`
+- Implement preference-based media queries
+
+## Accessibility in CSS
+- Ensure sufficient color contrast (4.5:1 minimum)
+- Respect user preferences (`prefers-reduced-motion`)
+- Use focus-visible for better keyboard navigation
+- Implement proper focus indicators
+- Support high contrast mode
+- Use semantic color naming
+
+## Code Organization
+- Follow consistent naming conventions (BEM recommended)
+- Group related properties logically
+- Use meaningful class names that describe purpose
+- Implement utility classes for common patterns
+- Organize CSS in logical sections (reset, layout, components, utilities)
+- Write comments in English only for complex calculations and magic numbers
+
+## Example Component Structure
+```css
+/* Component: Card */
+.card {
+  --card-padding: var(--spacing-md);
+  --card-radius: var(--radius-md);
+  
+  container-type: inline-size;
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-sm);
+}
+
+@container (min-width: 300px) {
+  .card {
+    --card-padding: var(--spacing-lg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+/* Responsive typography */
+.card__title {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  line-height: var(--line-height-tight);
+  margin-block-end: var(--spacing-sm);
+}
+```
