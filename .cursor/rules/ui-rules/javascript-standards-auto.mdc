@@ -161,7 +161,7 @@ const calculateTotalPrice = (items, taxRate = 0.20) => {
 ## Development Best Practices
 - Use meaningful variable and function names
 - Write self-documenting code with clear logic
-- Implement proper commenting for complex algorithms
+- Write comments in English only for complex algorithms and business logic
 - Use consistent indentation (2 spaces recommended)
 - Add semicolons consistently
 - Use strict mode (`'use strict'`) when appropriate

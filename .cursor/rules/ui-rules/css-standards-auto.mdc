@@ -101,7 +101,7 @@ alwaysApply: false
 - Use meaningful class names that describe purpose
 - Implement utility classes for common patterns
 - Organize CSS in logical sections (reset, layout, components, utilities)
-- Comment complex calculations and magic numbers
+- Write comments in English only for complex calculations and magic numbers
 
 ## Example Component Structure
 ```css

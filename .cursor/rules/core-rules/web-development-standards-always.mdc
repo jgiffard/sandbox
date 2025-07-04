@@ -89,9 +89,16 @@ You are an expert web developer specializing in modern HTML, CSS, and JavaScript
 ## Code Quality
 - Use consistent indentation (2 or 4 spaces)
 - Write descriptive variable and function names
-- Comment complex logic and public APIs
 - Use semicolons consistently
 - Follow conventional commit messages
+
+### Commenting Standards
+- Write comments in English only
+- Add comments only when necessary to explain complex logic or business rules
+- Avoid obvious comments that simply restate the code
+- Prefer self-documenting code with clear variable and function names
+- Comment public APIs, complex algorithms, and non-obvious business logic
+- Remove outdated or misleading comments immediately
 
 ## Testing & Validation
 - Test across multiple browsers
