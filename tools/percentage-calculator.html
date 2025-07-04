@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice de pourcentages - Boîte à Outils</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🧮 Calculatrice de pourcentages</h1>
+            <p class="subtitle">Calculez facilement tous types de pourcentages</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="tool-nav">
+                <a href="../index.html" class="back-home">
+                    🏠 Retour à l'accueil
+                </a>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-card">
+                    <div class="calc-grid">
+                        <div class="calc-item">
+                            <h3>Quel est X% de Y ?</h3>
+                            <div class="calc-inputs">
+                                <input type="number" id="percent1" placeholder="Pourcentage">
+                                <span>% de</span>
+                                <input type="number" id="value1" placeholder="Valeur">
+                                <span>=</span>
+                                <span class="result" id="result1">0</span>
+                            </div>
+                        </div>
+                        <div class="calc-item">
+                            <h3>X est quel % de Y ?</h3>
+                            <div class="calc-inputs">
+                                <input type="number" id="value2" placeholder="Valeur">
+                                <span>est</span>
+                                <span class="result" id="result2">0</span>
+                                <span>% de</span>
+                                <input type="number" id="total2" placeholder="Total">
+                            </div>
+                        </div>
+                        <div class="calc-item">
+                            <h3>Variation en pourcentage</h3>
+                            <div class="calc-inputs">
+                                <input type="number" id="oldValue" placeholder="Ancienne valeur">
+                                <span>→</span>
+                                <input type="number" id="newValue" placeholder="Nouvelle valeur">
+                                <span>=</span>
+                                <span class="result" id="result3">0</span>
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Boîte à Outils - Utilitaires web simples et efficaces</p>
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/percentage-calculator.js"></script>
+</body>
+</html>

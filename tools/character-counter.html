@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de caractères - Boîte à Outils</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">📝 Compteur de caractères</h1>
+            <p class="subtitle">Comptez facilement les caractères, mots et lignes</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="tool-nav">
+                <a href="../index.html" class="back-home">
+                    🏠 Retour à l'accueil
+                </a>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-card">
+                    <div class="input-group">
+                        <textarea id="textInput" placeholder="Tapez votre texte ici..." rows="8"></textarea>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="charCount">0</span>
+                            <span class="stat-label">Caractères</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="charCountNoSpaces">0</span>
+                            <span class="stat-label">Sans espaces</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="wordCount">0</span>
+                            <span class="stat-label">Mots</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="lineCount">0</span>
+                            <span class="stat-label">Lignes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Boîte à Outils - Utilitaires web simples et efficaces</p>
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/character-counter.js"></script>
+</body>
+</html>
