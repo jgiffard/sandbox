@@ -1,140 +1,162 @@
-# Cursor Rules - Standards Web & JavaScript
+You are an expert web developer specializing in modern HTML, CSS, and JavaScript best practices.
 
-## 🌐 Standards HTML
+# Web Development Standards & Best Practices
 
-- Utiliser HTML5 sémantique avec les bonnes balises (header, main, section, article, nav, aside, footer)
-- Toujours inclure la déclaration DOCTYPE HTML5
-- Utiliser des attributs `alt` descriptifs pour les images
-- Structurer le contenu de manière logique et accessible
-- Valider le HTML avec les standards W3C
-- Utiliser `lang` sur l'élément html pour l'accessibilité
-- Préférer les éléments natifs aux divs quand c'est possible
+## Core Principles
+- Write semantic, accessible HTML5
+- Use modern CSS with custom properties and layouts
+- Follow ES6+ JavaScript standards
+- Prioritize performance and security
+- Mobile-first, responsive design
 
-## 🎨 Standards CSS
+## HTML Guidelines
 
-- Utiliser des variables CSS (custom properties) pour la cohérence
-- Suivre la méthodologie BEM ou une convention de nommage claire
-- Mobile-first design avec media queries progressives
-- Utiliser Flexbox et Grid plutôt que des hacks de positionnement
-- Éviter les `!important` sauf cas exceptionnels
-- Préférer les unités relatives (rem, em, %, vh, vw)
-- Optimiser les performances avec `transform` et `opacity` pour les animations
-- Utiliser des fallbacks pour la compatibilité navigateurs
+### Semantic Structure
+```html
+<!-- Use semantic elements -->
+<header>, <main>, <section>, <article>, <nav>, <aside>, <footer>
 
-## ⚡ Standards JavaScript
+<!-- Always include proper DOCTYPE and lang -->
+<!DOCTYPE html>
+<html lang="fr">
 
-### Syntaxe et style
-- Utiliser ES6+ (const/let au lieu de var, arrow functions, destructuring)
-- Préférer `const` par défaut, `let` si réassignation nécessaire
-- Nommage explicite et descriptif (camelCase pour variables/fonctions)
-- Toujours utiliser le point-virgule
-- Utiliser des template literals pour la concaténation de chaînes
-- Éviter les variables globales, utiliser des modules
-
-### Fonctions et performance
-- Préférer les fonctions pures quand c'est possible
-- Utiliser async/await plutôt que .then() pour les promesses
-- Éviter les callbacks imbriqués (callback hell)
-- Debounce/throttle les événements fréquents (scroll, resize, input)
-- Utiliser la délégation d'événements pour les listes dynamiques
-- Nettoyer les event listeners et timers (avoid memory leaks)
-
-### Sécurité et validation
-- Toujours valider et sanitiser les entrées utilisateur
-- Utiliser `textContent` au lieu de `innerHTML` quand possible
-- Éviter `eval()` et l'exécution de code dynamique non sécurisé
-- Implémenter la validation côté client ET serveur
-- Utiliser HTTPS en production
-
-## 🔧 Outils et qualité
-
-- Utiliser un linter (ESLint) avec des règles strictes
-- Formater le code avec Prettier
-- Commenter le code complexe et les APIs publiques
-- Utiliser des noms de commits conventionnels
-- Tester sur plusieurs navigateurs
-- Optimiser les images et assets
-- Minifier CSS/JS en production
-
-## 📱 Accessibilité (a11y)
-
-- Utiliser les attributs ARIA appropriés
-- Assurer un contraste suffisant (minimum 4.5:1)
-- Rendre l'interface navigable au clavier
-- Fournir des alternatives textuelles aux contenus non-textuels
-- Tester avec un lecteur d'écran
-- Utiliser des labels explicites pour les formulaires
-- Gérer le focus de manière logique
-
-## 🚀 Performance
-
-- Lazy loading pour les images et contenus non critiques
-- Minimiser les requêtes HTTP
-- Utiliser la compression (gzip/brotli)
-- Optimiser les fonts (font-display: swap)
-- Éviter le layout thrashing
-- Utiliser le cache navigateur efficacement
-- Mesurer avec les Core Web Vitals
-
-## 📁 Structure projet
-
-- Séparer HTML, CSS et JavaScript dans des fichiers distincts
-- Organiser les assets dans des dossiers logiques (/css, /js, /images, /fonts)
-- Utiliser des noms de fichiers cohérents et descriptifs
-- Maintenir un README.md détaillé
-- Versionner avec Git avec des commits atomiques
-
-## 🔒 Bonnes pratiques de sécurité
-
-- Ne jamais exposer de clés API ou secrets dans le code front-end
-- Valider toutes les entrées utilisateur
-- Utiliser Content Security Policy (CSP)
-- Échapper les données avant affichage
-- Implémenter rate limiting côté serveur
-- Utiliser HTTPS partout
-
-## 📋 Checklist avant production
-
-- [ ] Code testé sur navigateurs principaux
-- [ ] Performance vérifiée (Lighthouse)
-- [ ] Accessibilité validée
-- [ ] SEO optimisé (meta tags, structure)
-- [ ] Erreurs console corrigées
-- [ ] Images optimisées
-- [ ] Code minifié et compressé
-- [ ] HTTPS configuré
-- [ ] Monitoring d'erreurs en place
-
-## 🎯 Règles spécifiques pour ce projet
-
-- Privilégier vanilla JavaScript (pas de frameworks lourds)
-- Interface mobile-first avec design responsive
-- Animations subtiles et performantes
-- Code commenté et auto-documenté
-- Fonctionnalités offline-first quand possible
-- Respect de la vie privée (pas de tracking)
-
-## 🔄 Convention de commits
-
-```
-feat: nouvelle fonctionnalité
-fix: correction de bug
-docs: mise à jour documentation
-style: formatage, point-virgules manquants
-refactor: refactoring sans changement fonctionnel
-test: ajout ou modification de tests
-chore: tâches de maintenance
+<!-- Descriptive alt text -->
+<img src="logo.png" alt="Company logo with blue background">
 ```
 
-## 📊 Métriques à surveiller
+### Accessibility
+- Use proper heading hierarchy (h1 → h2 → h3)
+- Include ARIA attributes when needed
+- Ensure keyboard navigation works
+- Provide focus indicators
+- Use labels for form inputs
 
-- First Contentful Paint (FCP) < 1.8s
-- Largest Contentful Paint (LCP) < 2.5s
-- Cumulative Layout Shift (CLS) < 0.1
-- First Input Delay (FID) < 100ms
-- Accessibility score > 95
-- SEO score > 90
+## CSS Guidelines
 
----
+### Modern CSS
+```css
+/* Use CSS custom properties */
+:root {
+  --primary-color: #6366f1;
+  --font-size-base: 1rem;
+  --spacing-unit: 0.5rem;
+}
 
-**Remember: Code for humans, optimize for machines** 🤝
+/* Mobile-first media queries */
+.component {
+  /* Mobile styles first */
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up */
+}
+```
+
+### Layout & Performance
+- Use Flexbox and CSS Grid over floats
+- Prefer `transform` and `opacity` for animations
+- Use relative units (rem, em, %, vh, vw)
+- Avoid `!important` unless absolutely necessary
+- Follow BEM naming convention when applicable
+
+## JavaScript Guidelines
+
+### Modern Syntax
+```javascript
+// Use const/let, never var
+const API_URL = 'https://api.example.com';
+let userData = null;
+
+// Arrow functions for callbacks
+array.map(item => item.name);
+
+// Template literals
+const message = `Hello ${user.name}!`;
+
+// Destructuring
+const { name, email } = user;
+```
+
+### Best Practices
+- Prefer `const` by default, `let` when reassignment needed
+- Use async/await over .then() chains
+- Implement proper error handling with try/catch
+- Validate and sanitize all user inputs
+- Use `textContent` instead of `innerHTML` when possible
+- Clean up event listeners to prevent memory leaks
+
+### Event Handling
+```javascript
+// Debounce frequent events
+const debouncedSearch = debounce(searchFunction, 300);
+input.addEventListener('input', debouncedSearch);
+
+// Use event delegation for dynamic content
+container.addEventListener('click', (e) => {
+  if (e.target.matches('.button')) {
+    handleClick(e);
+  }
+});
+```
+
+## Security Standards
+- Never expose API keys in client-side code
+- Validate inputs on both client and server
+- Use Content Security Policy (CSP)
+- Escape data before displaying to users
+- Use HTTPS in production
+- Implement proper authentication and authorization
+
+## Performance Guidelines
+- Optimize images (WebP, lazy loading)
+- Minimize HTTP requests
+- Use browser caching effectively
+- Implement compression (gzip/brotli)
+- Monitor Core Web Vitals:
+  - FCP < 1.8s
+  - LCP < 2.5s  
+  - CLS < 0.1
+  - FID < 100ms
+
+## File Organization
+```
+project/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── images/
+├── fonts/
+└── README.md
+```
+
+## Code Quality
+- Use consistent indentation (2 or 4 spaces)
+- Write descriptive variable and function names
+- Comment complex logic and public APIs
+- Use semicolons consistently
+- Follow conventional commit messages:
+  - feat: new feature
+  - fix: bug fix  
+  - docs: documentation
+  - style: formatting
+  - refactor: code restructuring
+  - test: adding tests
+
+## Testing & Validation
+- Test across multiple browsers
+- Validate HTML with W3C validator
+- Check accessibility with screen readers
+- Run Lighthouse audits
+- Test keyboard navigation
+- Verify responsive design on various devices
+
+## Project-Specific Rules
+- Prefer vanilla JavaScript over heavy frameworks
+- Implement offline-first features when possible
+- Ensure privacy-respecting code (no unnecessary tracking)
+- Write self-documenting code with clear function names
+- Use progressive enhancement principles
+
+Remember: Write code for humans first, then optimize for machines.
