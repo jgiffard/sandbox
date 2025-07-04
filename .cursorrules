@@ -1,0 +1,140 @@
+# Cursor Rules - Standards Web & JavaScript
+
+## 🌐 Standards HTML
+
+- Utiliser HTML5 sémantique avec les bonnes balises (header, main, section, article, nav, aside, footer)
+- Toujours inclure la déclaration DOCTYPE HTML5
+- Utiliser des attributs `alt` descriptifs pour les images
+- Structurer le contenu de manière logique et accessible
+- Valider le HTML avec les standards W3C
+- Utiliser `lang` sur l'élément html pour l'accessibilité
+- Préférer les éléments natifs aux divs quand c'est possible
+
+## 🎨 Standards CSS
+
+- Utiliser des variables CSS (custom properties) pour la cohérence
+- Suivre la méthodologie BEM ou une convention de nommage claire
+- Mobile-first design avec media queries progressives
+- Utiliser Flexbox et Grid plutôt que des hacks de positionnement
+- Éviter les `!important` sauf cas exceptionnels
+- Préférer les unités relatives (rem, em, %, vh, vw)
+- Optimiser les performances avec `transform` et `opacity` pour les animations
+- Utiliser des fallbacks pour la compatibilité navigateurs
+
+## ⚡ Standards JavaScript
+
+### Syntaxe et style
+- Utiliser ES6+ (const/let au lieu de var, arrow functions, destructuring)
+- Préférer `const` par défaut, `let` si réassignation nécessaire
+- Nommage explicite et descriptif (camelCase pour variables/fonctions)
+- Toujours utiliser le point-virgule
+- Utiliser des template literals pour la concaténation de chaînes
+- Éviter les variables globales, utiliser des modules
+
+### Fonctions et performance
+- Préférer les fonctions pures quand c'est possible
+- Utiliser async/await plutôt que .then() pour les promesses
+- Éviter les callbacks imbriqués (callback hell)
+- Debounce/throttle les événements fréquents (scroll, resize, input)
+- Utiliser la délégation d'événements pour les listes dynamiques
+- Nettoyer les event listeners et timers (avoid memory leaks)
+
+### Sécurité et validation
+- Toujours valider et sanitiser les entrées utilisateur
+- Utiliser `textContent` au lieu de `innerHTML` quand possible
+- Éviter `eval()` et l'exécution de code dynamique non sécurisé
+- Implémenter la validation côté client ET serveur
+- Utiliser HTTPS en production
+
+## 🔧 Outils et qualité
+
+- Utiliser un linter (ESLint) avec des règles strictes
+- Formater le code avec Prettier
+- Commenter le code complexe et les APIs publiques
+- Utiliser des noms de commits conventionnels
+- Tester sur plusieurs navigateurs
+- Optimiser les images et assets
+- Minifier CSS/JS en production
+
+## 📱 Accessibilité (a11y)
+
+- Utiliser les attributs ARIA appropriés
+- Assurer un contraste suffisant (minimum 4.5:1)
+- Rendre l'interface navigable au clavier
+- Fournir des alternatives textuelles aux contenus non-textuels
+- Tester avec un lecteur d'écran
+- Utiliser des labels explicites pour les formulaires
+- Gérer le focus de manière logique
+
+## 🚀 Performance
+
+- Lazy loading pour les images et contenus non critiques
+- Minimiser les requêtes HTTP
+- Utiliser la compression (gzip/brotli)
+- Optimiser les fonts (font-display: swap)
+- Éviter le layout thrashing
+- Utiliser le cache navigateur efficacement
+- Mesurer avec les Core Web Vitals
+
+## 📁 Structure projet
+
+- Séparer HTML, CSS et JavaScript dans des fichiers distincts
+- Organiser les assets dans des dossiers logiques (/css, /js, /images, /fonts)
+- Utiliser des noms de fichiers cohérents et descriptifs
+- Maintenir un README.md détaillé
+- Versionner avec Git avec des commits atomiques
+
+## 🔒 Bonnes pratiques de sécurité
+
+- Ne jamais exposer de clés API ou secrets dans le code front-end
+- Valider toutes les entrées utilisateur
+- Utiliser Content Security Policy (CSP)
+- Échapper les données avant affichage
+- Implémenter rate limiting côté serveur
+- Utiliser HTTPS partout
+
+## 📋 Checklist avant production
+
+- [ ] Code testé sur navigateurs principaux
+- [ ] Performance vérifiée (Lighthouse)
+- [ ] Accessibilité validée
+- [ ] SEO optimisé (meta tags, structure)
+- [ ] Erreurs console corrigées
+- [ ] Images optimisées
+- [ ] Code minifié et compressé
+- [ ] HTTPS configuré
+- [ ] Monitoring d'erreurs en place
+
+## 🎯 Règles spécifiques pour ce projet
+
+- Privilégier vanilla JavaScript (pas de frameworks lourds)
+- Interface mobile-first avec design responsive
+- Animations subtiles et performantes
+- Code commenté et auto-documenté
+- Fonctionnalités offline-first quand possible
+- Respect de la vie privée (pas de tracking)
+
+## 🔄 Convention de commits
+
+```
+feat: nouvelle fonctionnalité
+fix: correction de bug
+docs: mise à jour documentation
+style: formatage, point-virgules manquants
+refactor: refactoring sans changement fonctionnel
+test: ajout ou modification de tests
+chore: tâches de maintenance
+```
+
+## 📊 Métriques à surveiller
+
+- First Contentful Paint (FCP) < 1.8s
+- Largest Contentful Paint (LCP) < 2.5s
+- Cumulative Layout Shift (CLS) < 0.1
+- First Input Delay (FID) < 100ms
+- Accessibility score > 95
+- SEO score > 90
+
+---
+
+**Remember: Code for humans, optimize for machines** 🤝
