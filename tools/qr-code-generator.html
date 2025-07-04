@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur QR Code - Boîte à Outils</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">📱 Générateur QR Code</h1>
+            <p class="subtitle">Créez des QR codes pour vos URLs et textes</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="tool-nav">
+                <a href="../index.html" class="back-home">
+                    🏠 Retour à l'accueil
+                </a>
+            </div>
+
+            <div class="tool-container">
+                <div class="tool-card">
+                    <div class="input-group">
+                        <input type="text" id="qrInput" placeholder="Entrez le texte ou URL à encoder">
+                        <button class="btn-primary" data-action="generate-qr">Générer QR Code</button>
+                    </div>
+                    <div class="qr-container">
+                        <canvas id="qrCanvas"></canvas>
+                        <button class="btn-secondary" id="downloadQR" data-action="download-qr" style="display: none;">
+                            📥 Télécharger
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Boîte à Outils - Utilitaires web simples et efficaces</p>
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/qr-code-generator.js"></script>
+</body>
+</html>

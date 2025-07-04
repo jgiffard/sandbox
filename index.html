@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -20,169 +19,36 @@
 
     <main class="main">
         <div class="container">
-            <nav class="tool-nav">
-                <button class="nav-btn active" data-tool="counter">📝 Compteur de caractères</button>
-                <button class="nav-btn" data-tool="qrcode">📱 Générateur QR Code</button>
-                <button class="nav-btn" data-tool="username">👤 Générateur de pseudo</button>
-                <button class="nav-btn" data-tool="percentage">🧮 Calculatrice %</button>
-                <button class="nav-btn" data-tool="password">🔐 Générateur de mot de passe</button>
-            </nav>
-
-            <!-- Compteur de caractères -->
-            <div class="tool-section active" id="counter">
-                <div class="tool-card">
-                    <h2>📝 Compteur de caractères</h2>
-                    <div class="input-group">
-                        <textarea id="textInput" placeholder="Tapez votre texte ici..." rows="8"></textarea>
-                    </div>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number" id="charCount">0</span>
-                            <span class="stat-label">Caractères</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="charCountNoSpaces">0</span>
-                            <span class="stat-label">Sans espaces</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="wordCount">0</span>
-                            <span class="stat-label">Mots</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="lineCount">0</span>
-                            <span class="stat-label">Lignes</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Générateur QR Code -->
-            <div class="tool-section" id="qrcode">
-                <div class="tool-card">
-                    <h2>📱 Générateur QR Code</h2>
-                    <div class="input-group">
-                        <input type="text" id="qrInput" placeholder="Entrez le texte ou URL à encoder">
-                        <button class="btn-primary" data-action="generate-qr">Générer QR Code</button>
-                    </div>
-                    <div class="qr-container">
-                        <canvas id="qrCanvas"></canvas>
-                        <button class="btn-secondary" id="downloadQR" data-action="download-qr" style="display: none;">Télécharger</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Générateur de pseudo -->
-            <div class="tool-section" id="username">
-                <div class="tool-card">
-                    <h2>👤 Générateur de pseudo</h2>
-                    <div class="options-grid">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="includeNumbers" checked>
-                            <span class="checkmark"></span>
-                            Inclure des chiffres
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="includeSymbols">
-                            <span class="checkmark"></span>
-                            Inclure des symboles
-                        </label>
-                        <div class="input-group">
-                            <label for="usernameLength">Longueur :</label>
-                            <input type="range" id="usernameLength" min="4" max="20" value="8">
-                            <span id="lengthValue">8</span>
-                        </div>
-                    </div>
-                    <button class="btn-primary" data-action="generate-username">Générer un pseudo</button>
-                    <div class="result-container">
-                        <input type="text" id="generatedUsername" readonly>
-                        <button class="btn-copy" data-action="copy-to-clipboard" data-target="generatedUsername">📋</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Calculatrice de pourcentages -->
-            <div class="tool-section" id="percentage">
-                <div class="tool-card">
-                    <h2>🧮 Calculatrice de pourcentages</h2>
-                    <div class="calc-grid">
-                        <div class="calc-item">
-                            <h3>Quel est X% de Y ?</h3>
-                            <div class="calc-inputs">
-                                <input type="number" id="percent1" placeholder="Pourcentage">
-                                <span>% de</span>
-                                <input type="number" id="value1" placeholder="Valeur">
-                                <span>=</span>
-                                <span class="result" id="result1">0</span>
-                            </div>
-                        </div>
-                        <div class="calc-item">
-                            <h3>X est quel % de Y ?</h3>
-                            <div class="calc-inputs">
-                                <input type="number" id="value2" placeholder="Valeur">
-                                <span>est</span>
-                                <span class="result" id="result2">0</span>
-                                <span>% de</span>
-                                <input type="number" id="total2" placeholder="Total">
-                            </div>
-                        </div>
-                        <div class="calc-item">
-                            <h3>Variation en pourcentage</h3>
-                            <div class="calc-inputs">
-                                <input type="number" id="oldValue" placeholder="Ancienne valeur">
-                                <span>→</span>
-                                <input type="number" id="newValue" placeholder="Nouvelle valeur">
-                                <span>=</span>
-                                <span class="result" id="result3">0</span>
-                                <span>%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Générateur de mot de passe -->
-            <div class="tool-section" id="password">
-                <div class="tool-card">
-                    <h2>🔐 Générateur de mot de passe</h2>
-                    <div class="options-grid">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="includeUppercase" checked>
-                            <span class="checkmark"></span>
-                            Majuscules (A-Z)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="includeLowercase" checked>
-                            <span class="checkmark"></span>
-                            Minuscules (a-z)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="includePasswordNumbers" checked>
-                            <span class="checkmark"></span>
-                            Chiffres (0-9)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="includePasswordSymbols">
-                            <span class="checkmark"></span>
-                            Symboles (!@#$...)
-                        </label>
-                        <div class="input-group">
-                            <label for="passwordLength">Longueur :</label>
-                            <input type="range" id="passwordLength" min="8" max="50" value="16">
-                            <span id="passwordLengthValue">16</span>
-                        </div>
-                    </div>
-                    <button class="btn-primary" data-action="generate-password">Générer un mot de passe</button>
-                    <div class="result-container">
-                        <input type="text" id="generatedPassword" readonly>
-                        <button class="btn-copy" data-action="copy-to-clipboard" data-target="generatedPassword">📋</button>
-                    </div>
-                    <div class="password-strength">
-                        <div class="strength-bar">
-                            <div class="strength-fill" id="strengthFill"></div>
-                        </div>
-                        <span class="strength-text" id="strengthText">Cliquez pour générer</span>
-                    </div>
-                </div>
+            <div class="tools-grid">
+                <a href="tools/character-counter.html" class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h3>Compteur de caractères</h3>
+                    <p>Comptez les caractères, mots et lignes de votre texte</p>
+                </a>
+                
+                <a href="tools/qr-code-generator.html" class="tool-card">
+                    <div class="tool-icon">📱</div>
+                    <h3>Générateur QR Code</h3>
+                    <p>Créez des QR codes pour vos URLs et textes</p>
+                </a>
+                
+                <a href="tools/username-generator.html" class="tool-card">
+                    <div class="tool-icon">👤</div>
+                    <h3>Générateur de pseudo</h3>
+                    <p>Générez des noms d'utilisateur uniques et originaux</p>
+                </a>
+                
+                <a href="tools/percentage-calculator.html" class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <h3>Calculatrice de pourcentages</h3>
+                    <p>Calculez facilement tous types de pourcentages</p>
+                </a>
+                
+                <a href="tools/password-generator.html" class="tool-card">
+                    <div class="tool-icon">🔐</div>
+                    <h3>Générateur de mot de passe</h3>
+                    <p>Créez des mots de passe sécurisés personnalisables</p>
+                </a>
             </div>
         </div>
     </main>
@@ -193,6 +59,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/common.js"></script>
 </body>
 </html>

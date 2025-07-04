@@ -1,3 +1,6 @@
+/* Import tools styles */
+@import url('tools.css');
+
 /* Variables CSS pour un thème cohérent */
 :root {
     --primary-color: #6366f1;
@@ -6,6 +9,7 @@
     --text-primary: #1e293b;
     --text-secondary: #64748b;
     --text-light: #94a3b8;
+    --text-color: #1e293b;
     --bg-primary: #ffffff;
     --bg-secondary: #f8fafc;
     --border-color: #e2e8f0;
