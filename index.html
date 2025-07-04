@@ -62,11 +62,11 @@
                     <h2>📱 Générateur QR Code</h2>
                     <div class="input-group">
                         <input type="text" id="qrInput" placeholder="Entrez le texte ou URL à encoder">
-                        <button class="btn-primary" onclick="generateQR()">Générer QR Code</button>
+                        <button class="btn-primary" data-action="generate-qr">Générer QR Code</button>
                     </div>
                     <div class="qr-container">
                         <canvas id="qrCanvas"></canvas>
-                        <button class="btn-secondary" id="downloadQR" onclick="downloadQR()" style="display: none;">Télécharger</button>
+                        <button class="btn-secondary" id="downloadQR" data-action="download-qr" style="display: none;">Télécharger</button>
                     </div>
                 </div>
             </div>
@@ -92,10 +92,10 @@
                             <span id="lengthValue">8</span>
                         </div>
                     </div>
-                    <button class="btn-primary" onclick="generateUsername()">Générer un pseudo</button>
+                    <button class="btn-primary" data-action="generate-username">Générer un pseudo</button>
                     <div class="result-container">
                         <input type="text" id="generatedUsername" readonly>
-                        <button class="btn-copy" onclick="copyToClipboard('generatedUsername')">📋</button>
+                        <button class="btn-copy" data-action="copy-to-clipboard" data-target="generatedUsername">📋</button>
                     </div>
                 </div>
             </div>
@@ -171,10 +171,10 @@
                             <span id="passwordLengthValue">16</span>
                         </div>
                     </div>
-                    <button class="btn-primary" onclick="generatePassword()">Générer un mot de passe</button>
+                    <button class="btn-primary" data-action="generate-password">Générer un mot de passe</button>
                     <div class="result-container">
                         <input type="text" id="generatedPassword" readonly>
-                        <button class="btn-copy" onclick="copyToClipboard('generatedPassword')">📋</button>
+                        <button class="btn-copy" data-action="copy-to-clipboard" data-target="generatedPassword">📋</button>
                     </div>
                     <div class="password-strength">
                         <div class="strength-bar">
