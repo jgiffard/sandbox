@@ -1,0 +1,126 @@
+---
+description: USE WHEN creating, updating, or managing .mdc rule files for this project. Essential for maintaining consistency in rule generation, following the new MDC format, and organizing rules in the proper directory structure with correct frontmatter.
+globs: 
+alwaysApply: false
+---
+
+# MDC Rule Generation Standards
+
+## Rule Structure Requirements
+All `.mdc` files must follow this exact format:
+
+```markdown
+---
+description: [content based on rule type]
+globs: [file patterns or empty]
+alwaysApply: [true or false]
+---
+
+# Rule Title
+
+[Rule content in markdown]
+```
+
+## Four Rule Types
+
+### 1. Always Rules (`-always.mdc`)
+```markdown
+---
+description: 
+globs: 
+alwaysApply: true
+---
+```
+- Applied to every chat and command
+- Both description and globs must be empty
+- Use for global project standards
+
+### 2. Auto-Attach Rules (`-auto.mdc`)
+```markdown
+---
+description: 
+globs: *.js, **/*.ts, src/**/*.tsx
+alwaysApply: false
+---
+```
+- Automatically attached when files match glob patterns
+- Description must be empty
+- Use for file-type specific rules
+
+### 3. Agent-Selected Rules (`-agent.mdc`)
+```markdown
+---
+description: USE WHEN [clear trigger conditions for when agent should apply this rule]
+globs: 
+alwaysApply: false
+---
+```
+- Agent decides when to apply based on description
+- Globs must be empty
+- Description should start with "USE WHEN" for clarity
+
+### 4. Manual Rules (`-manual.mdc`)
+```markdown
+---
+description: 
+globs: 
+alwaysApply: false
+---
+```
+- Only applied when explicitly referenced with @ or markdown links
+- All frontmatter fields empty except alwaysApply: false
+- Use for specialized rules referenced on demand
+
+## Directory Organization
+Create rules in organized subdirectories under `.cursor/rules/`:
+
+- `.cursor/rules/core-rules/` - Cursor behavior and rule generation
+- `.cursor/rules/ui-rules/` - HTML, CSS, JavaScript, React
+- `.cursor/rules/global-rules/` - Always-applied project standards  
+- `.cursor/rules/testing-rules/` - Testing standards and practices
+- `.cursor/rules/tool-rules/` - Git, CLI tools, MCP tools
+- `.cursor/rules/ts-rules/` - TypeScript specific rules
+- `.cursor/rules/py-rules/` - Python specific rules
+
+## File Naming Convention
+Format: `{descriptive-name}-{type}.mdc`
+
+Examples:
+- `web-standards-always.mdc`
+- `typescript-coding-auto.mdc`
+- `refactoring-guidelines-agent.mdc`
+- `advanced-patterns-manual.mdc`
+
+## Glob Pattern Guidelines
+- Never use quotes around glob patterns
+- Never group extensions with `{}`
+- Use comma separation: `*.js, *.ts, **/*.tsx`
+- Common patterns:
+  - `*.html, **/*.html` for HTML files
+  - `src/**/*.ts, lib/**/*.ts` for TypeScript in specific dirs
+  - `**/*.test.js, **/*.spec.js` for test files
+
+## Content Best Practices
+- Start with clear, actionable rules
+- Include both valid and invalid examples when helpful
+- Use markdown formatting for readability
+- Keep content focused and concise
+- Add examples in code blocks with proper syntax highlighting
+- Use bullet points for rule lists
+- Include context for when rules apply
+
+## Editor Configuration
+Add to Cursor settings for proper MDC editing:
+```json
+"workbench.editorAssociations": {
+  "*.mdc": "default"
+}
+```
+
+## Rule Generation Process
+1. Determine appropriate rule type based on usage
+2. Choose correct directory for organization
+3. Create file with proper naming convention
+4. Add frontmatter with correct fields for rule type
+5. Write clear, actionable rule content
+6. Test rule application in relevant contexts

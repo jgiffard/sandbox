@@ -1,0 +1,104 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Web Development Standards & Best Practices
+
+You are an expert web developer specializing in modern HTML, CSS, and JavaScript best practices.
+
+## Core Principles
+- Write semantic, accessible HTML5
+- Use modern CSS with custom properties and layouts
+- Follow ES6+ JavaScript standards
+- Prioritize performance and security
+- Mobile-first, responsive design
+
+## HTML Guidelines
+
+### Semantic Structure
+- Use semantic elements: `<header>`, `<main>`, `<section>`, `<article>`, `<nav>`, `<aside>`, `<footer>`
+- Always include proper DOCTYPE and lang attribute
+- Use descriptive alt text for images
+- Maintain proper heading hierarchy (h1 → h2 → h3)
+- Include ARIA attributes when needed
+
+### Accessibility
+- Ensure keyboard navigation works
+- Provide focus indicators
+- Use labels for form inputs
+- Test with screen readers
+- Maintain sufficient contrast (4.5:1 minimum)
+
+## CSS Guidelines
+
+### Modern CSS
+- Use CSS custom properties for consistency
+- Follow mobile-first approach with min-width media queries
+- Use Flexbox and CSS Grid over floats
+- Prefer `transform` and `opacity` for animations
+- Use relative units (rem, em, %, vh, vw)
+- Avoid `!important` unless absolutely necessary
+
+### Performance
+- Minimize HTTP requests
+- Use efficient selectors
+- Implement CSS containment when appropriate
+- Optimize font loading with `font-display: swap`
+
+## JavaScript Guidelines
+
+### Modern Syntax
+- Use `const` by default, `let` when reassignment needed
+- Prefer arrow functions for callbacks
+- Use template literals over string concatenation
+- Implement destructuring for cleaner code
+- Use async/await over .then() chains
+
+### Best Practices
+- Validate and sanitize all user inputs
+- Use `textContent` instead of `innerHTML` when possible
+- Implement proper error handling with try/catch
+- Clean up event listeners to prevent memory leaks
+- Debounce frequent events (scroll, resize, input)
+
+### Event Handling
+- Use event delegation for dynamic content
+- Implement proper cleanup in useEffect/lifecycle methods
+- Avoid inline event handlers in HTML
+
+## Security Standards
+- Never expose API keys in client-side code
+- Validate inputs on both client and server
+- Use Content Security Policy (CSP)
+- Escape data before displaying to users
+- Use HTTPS in production
+- Implement proper authentication and authorization
+
+## Performance Guidelines
+- Optimize images (WebP, lazy loading)
+- Implement compression (gzip/brotli)
+- Use browser caching effectively
+- Monitor Core Web Vitals:
+  - FCP < 1.8s
+  - LCP < 2.5s  
+  - CLS < 0.1
+  - FID < 100ms
+
+## Code Quality
+- Use consistent indentation (2 or 4 spaces)
+- Write descriptive variable and function names
+- Comment complex logic and public APIs
+- Use semicolons consistently
+- Follow conventional commit messages
+
+## Testing & Validation
+- Test across multiple browsers
+- Validate HTML with W3C validator
+- Check accessibility compliance
+- Run Lighthouse audits
+- Test keyboard navigation
+- Verify responsive design on various devices
+
+Remember: Write code for humans first, then optimize for machines.
