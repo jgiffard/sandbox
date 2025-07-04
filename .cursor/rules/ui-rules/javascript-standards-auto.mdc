@@ -143,6 +143,50 @@ const calculateTotalPrice = (items, taxRate = 0.20) => {
 };
 ```
 
+## Library and Dependency Management
+- **Prefer vanilla JavaScript** for simple functionality over external libraries
+- **Check existing dependencies** before adding new ones to avoid duplication
+- **Use native APIs first**: Fetch API, Web Storage, Intersection Observer, etc.
+- **Evaluate necessity**: Ask "Can this be built simply without a library?"
+- **Consider bundle size impact** of every added dependency
+- **Audit dependencies regularly** to remove unused packages
+
+### Vanilla JavaScript Alternatives
+```javascript
+// ✅ Use native Fetch instead of axios for simple requests
+const fetchData = async (url) => {
+  const response = await fetch(url);
+  return response.json();
+};
+
+// ✅ Use native DOM methods instead of jQuery
+const toggleClass = (element, className) => {
+  element.classList.toggle(className);
+};
+
+// ✅ Use native date formatting instead of moment.js for simple cases
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat('fr-FR').format(date);
+};
+
+// ✅ Use native animations instead of animation libraries for simple effects
+const fadeIn = (element, duration = 300) => {
+  element.style.opacity = '0';
+  element.style.transition = `opacity ${duration}ms ease`;
+  requestAnimationFrame(() => {
+    element.style.opacity = '1';
+  });
+};
+```
+
+### When Libraries Are Justified
+- Complex data visualization (D3.js, Chart.js)
+- Advanced state management in large applications
+- Rich text editing functionality
+- Complex date/time operations across timezones
+- Advanced image manipulation
+- WebGL/3D graphics operations
+
 ## Modern JavaScript Features
 - Use optional chaining (`?.`) for safe property access
 - Use nullish coalescing (`??`) for default values

@@ -1,0 +1,151 @@
+---
+description: USE WHEN evaluating whether to add a new dependency, library, or package to the project. Essential for maintaining minimal bundle size and avoiding dependency bloat while ensuring we use vanilla solutions when possible.
+globs: 
+alwaysApply: false
+---
+
+# Dependency Evaluation Guidelines
+
+## Decision Framework
+
+Before adding any external dependency, follow this evaluation process:
+
+### 1. **Can it be built with vanilla code?**
+- If the functionality is simple (< 50 lines of code), implement it yourself
+- Native browser APIs often provide sufficient functionality
+- Consider the learning value of implementing it from scratch
+
+### 2. **Check existing dependencies**
+- Search current `package.json` for similar functionality
+- Look for existing utilities that could be extended
+- Avoid adding libraries that duplicate existing capabilities
+
+### 3. **Evaluate complexity vs benefit**
+- **Low complexity, high usage**: Build from scratch
+- **High complexity, low usage**: Consider library but evaluate carefully
+- **High complexity, high usage**: Library justified if no suitable alternative exists
+
+## Common Vanilla Alternatives
+
+### ✅ Build These Yourself
+```javascript
+// Modal/Dialog components
+const createModal = (content) => {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = content;
+  document.body.appendChild(modal);
+  return modal;
+};
+
+// Simple HTTP client
+const api = {
+  get: (url) => fetch(url).then(r => r.json()),
+  post: (url, data) => fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(r => r.json())
+};
+
+// Basic form validation
+const validateEmail = (email) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
+// Simple event emitter
+class EventEmitter {
+  constructor() { this.events = {}; }
+  on(event, callback) { 
+    (this.events[event] = this.events[event] || []).push(callback); 
+  }
+  emit(event, data) { 
+    (this.events[event] || []).forEach(callback => callback(data)); 
+  }
+}
+
+// Local storage utilities
+const storage = {
+  get: (key) => JSON.parse(localStorage.getItem(key) || 'null'),
+  set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
+  remove: (key) => localStorage.removeItem(key)
+};
+```
+
+### ✅ Libraries Justified For
+- **Complex state management**: Redux, Zustand for large applications
+- **Advanced data visualization**: D3.js, Chart.js, Three.js
+- **Rich text editing**: CodeMirror, Monaco Editor, TinyMCE
+- **Date/time with timezones**: date-fns, day.js (not moment.js - too heavy)
+- **Advanced image processing**: Fabric.js, Konva.js
+- **Complex animations**: GSAP for sophisticated sequences
+- **PDF generation**: jsPDF, PDFKit for complex documents
+- **CSV/Excel parsing**: PapaParse for large datasets
+
+## Evaluation Questions
+
+Before adding a dependency, answer these:
+
+1. **Size Impact**: What's the bundle size increase?
+2. **Maintenance**: Is the library actively maintained?
+3. **Security**: Does it introduce vulnerabilities?
+4. **Learning Curve**: How complex is the API?
+5. **Alternatives**: Are there lighter alternatives?
+6. **Future-proofing**: Will native APIs replace this soon?
+
+## Red Flags - Avoid These Dependencies
+
+### 🚫 Unnecessary Libraries
+```javascript
+// Don't use lodash for simple operations
+import _ from 'lodash';
+const doubled = _.map(numbers, n => n * 2);
+
+// Use native instead
+const doubled = numbers.map(n => n * 2);
+
+// Don't use jQuery for simple DOM manipulation
+$('#element').addClass('active');
+
+// Use native instead
+document.getElementById('element').classList.add('active');
+
+// Don't use moment.js (too heavy)
+moment().format('YYYY-MM-DD');
+
+// Use native Intl or lighter alternative
+new Date().toISOString().split('T')[0];
+```
+
+### 🚫 Duplicate Functionality
+- Don't add `axios` if `fetch` meets your needs
+- Don't add `lodash` if you only need 2-3 utilities
+- Don't add UI libraries if you have a design system
+- Don't add multiple date libraries
+- Don't add multiple animation libraries
+
+## Implementation Strategy
+
+### For Simple Features
+1. **Start with vanilla implementation**
+2. **Measure development time vs maintenance cost**
+3. **Consider team knowledge and consistency**
+4. **Implement with modern JavaScript features**
+
+### For Complex Features
+1. **Research available options thoroughly**
+2. **Test with small proof of concept**
+3. **Evaluate bundle size impact**
+4. **Check community support and maintenance**
+5. **Document decision rationale**
+
+## Dependency Audit Process
+
+Monthly review:
+1. **List all dependencies with usage analysis**
+2. **Identify unused or barely used packages**
+3. **Check for security vulnerabilities**
+4. **Evaluate if functionality can now be done natively**
+5. **Remove or replace heavy dependencies**
+
+Remember: Every dependency is a liability. The best dependency is the one you don't need.

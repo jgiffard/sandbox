@@ -76,6 +76,38 @@ You are an expert web developer specializing in modern HTML, CSS, and JavaScript
 - Use HTTPS in production
 - Implement proper authentication and authorization
 
+## Dependency Management
+- **Minimize external dependencies** - prefer vanilla solutions for simple functionality
+- **Build from scratch** for basic components (modals, tooltips, simple animations)
+- **Check existing dependencies first** before adding new libraries
+- **Avoid duplicate functionality** - ensure no similar library is already installed
+- **Use native browser APIs** when available (Fetch API, Web Components, etc.)
+- **Evaluate bundle impact** - consider size and performance implications
+- **Prefer lightweight alternatives** when external libraries are necessary
+- **Remove unused dependencies** regularly through dependency audits
+
+### Examples of Vanilla vs Library Decisions
+**✅ Build from scratch:**
+- Simple modal dialogs
+- Basic form validation
+- Tooltips and dropdowns
+- Simple animations and transitions
+- Date formatting utilities
+- Basic state management
+
+**✅ Library acceptable for:**
+- Complex data visualization (D3.js, Chart.js)
+- Advanced animations (GSAP for complex sequences)
+- Rich text editors (CodeMirror, Monaco)
+- Complex date manipulation across timezones
+- Advanced image processing
+- WebGL/3D graphics
+
+**🔍 Always check first:**
+- Is similar functionality already available in existing dependencies?
+- Can native browser APIs handle this requirement?
+- Is the functionality core enough to justify the dependency weight?
+
 ## Performance Guidelines
 - Optimize images (WebP, lazy loading)
 - Implement compression (gzip/brotli)
